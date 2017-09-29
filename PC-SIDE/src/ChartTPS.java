@@ -27,9 +27,7 @@ public class ChartTPS extends JInternalFrame{
 		    setResizable(true);
 		    setClosable(true);
 		    setIconifiable(true);
-		    setTitle("TPS");
-		    
-		
+		    setTitle("TPS");	
 	}
 	
 	private ChartPanel buildDialPlot(int minimumValue, int maximumValue,
