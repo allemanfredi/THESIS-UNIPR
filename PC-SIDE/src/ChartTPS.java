@@ -19,7 +19,7 @@ public class ChartTPS extends JInternalFrame{
 	
 	public ChartTPS(){
 		
-		 	setPreferredSize(new Dimension(300, 300));
+		    setPreferredSize(new Dimension(300, 300));
 		    add(buildDialPlot(0, 100, 10));
 		    pack();
 		    setVisible(true);
