@@ -61,12 +61,13 @@ public class ChartTPSXY extends JInternalFrame{
 		setSize(800, 300);
 		setTitle("TPS's Chart");
 		setResizable(true);
-	    setClosable(true);
-	    setIconifiable(true);
+	    	setClosable(true);
+	    	setIconifiable(true);
 		
 	}
 	
 	private JPanel createChartPanel() {
+		
 	    String chartTitle = "TPS's chart";
 	    String xAxisLabel = "Time";
 	    String yAxisLabel = "Value";
