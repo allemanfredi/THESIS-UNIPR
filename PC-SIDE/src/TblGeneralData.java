@@ -81,12 +81,12 @@ public class TblGeneralData extends JInternalFrame   {
 		
 		this.add(panel);
 	    
-	    setBounds(0, 0, 270, 600);
-	    setResizable(true);
-	    setClosable(true);
-	    setIconifiable(true);
-	    setTitle("Data");
-	    setVisible(true);
+	        setBounds(0, 0, 270, 600);
+	        setResizable(true);
+	        setClosable(true);
+	        setIconifiable(true);
+	        setTitle("Data");
+	        setVisible(true);
 		
 	}
 
