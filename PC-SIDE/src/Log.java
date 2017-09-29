@@ -9,7 +9,8 @@ public class Log extends JInternalFrame{
 	
 
 	public Log( DefaultListModel<String> list ){
-		JList<String> logList = new JList<String>(list);
+		
+	    JList<String> logList = new JList<String>(list);
 	    JScrollPane scrollpane = new JScrollPane(logList);
 	    
 	    getContentPane().add(scrollpane);
