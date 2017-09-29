@@ -60,86 +60,85 @@ public class MyDataReceiveListener  implements IDataReceiveListener  {
 			
 			if ( canAdress.equals("300")){
 				
-                String strRpm = canPacket.substring(0, 2) + canPacket.substring(3, 5);
-                rpm = Integer.parseInt(strRpm, 16 );
-                
-                
-                String strTps1 = canPacket.substring(6, 8);
-                tps1 = Integer.parseInt( strTps1 ,16 ) ;
-                tps1 = ((tps1 * 100 )/256) + 1;
-                
-                String strMap =  canPacket.substring( 12 ,14) + canPacket.substring( 15,17);
-                map = Integer.parseInt(strMap, 16 );
-                
-                String strLnr1l = canPacket.substring( 18,20) + canPacket.substring( 21 ,23);
-                lnr1l = Integer.parseInt(strLnr1l, 16 );
-                
-                TelemetryData.getInstance().setDataID300(rpm,tps1,map, lnr1l); // SI BLOCCA QUA
-                
-                TelemetryData.getInstance().listDataLog.addElement("RPM : " + rpm + "     TPS1 : " + tps1 + "%     MAP : " + map + "     LNR1L : " + lnr1l);
-                TelemetryData.getInstance().listDataLog.addElement("");
-				
+				String strRpm = canPacket.substring(0, 2) + canPacket.substring(3, 5);
+				rpm = Integer.parseInt(strRpm, 16 );
+
+
+				String strTps1 = canPacket.substring(6, 8);
+				tps1 = Integer.parseInt( strTps1 ,16 ) ;
+				tps1 = ((tps1 * 100 )/256) + 1;
+
+				String strMap =  canPacket.substring( 12 ,14) + canPacket.substring( 15,17);
+				map = Integer.parseInt(strMap, 16 );
+
+				String strLnr1l = canPacket.substring( 18,20) + canPacket.substring( 21 ,23);
+				lnr1l = Integer.parseInt(strLnr1l, 16 );
+
+				TelemetryData.getInstance().setDataID300(rpm,tps1,map, lnr1l); // SI BLOCCA QUA
+
+				TelemetryData.getInstance().listDataLog.addElement("RPM : " + rpm + "     TPS1 : " + tps1 + "%     MAP : " + map + "     LNR1L : " + lnr1l);
+				TelemetryData.getInstance().listDataLog.addElement("");
+
 			}
 			
 			if ( canAdress.equals("301")){
 
-                
-                 dfarf = Integer.parseInt(canPacket.substring(0, 2), 16 );
-                 dmap = Integer.parseInt(canPacket.substring(3, 5) ,16 );
-                 ae = Integer.parseInt(canPacket.substring( 6,8), 16 );
-                 lnr2l = Integer.parseInt(canPacket.substring(9, 11), 16 );
-                
-                TelemetryData.getInstance().setDataID301(dfarf,dmap,ae, lnr2l);
- 
-                TelemetryData.getInstance().listDataLog.addElement("DARF : " + dfarf + "     DAMPA : " + dmap + "     AE : " + ae + "     LNR2L : " + lnr2l);
-                
-                TelemetryData.getInstance().listDataLog.addElement("");
-				
+				 dfarf = Integer.parseInt(canPacket.substring(0, 2), 16 );
+				 dmap = Integer.parseInt(canPacket.substring(3, 5) ,16 );
+				 ae = Integer.parseInt(canPacket.substring( 6,8), 16 );
+				 lnr2l = Integer.parseInt(canPacket.substring(9, 11), 16 );
+
+				TelemetryData.getInstance().setDataID301(dfarf,dmap,ae, lnr2l);
+
+				TelemetryData.getInstance().listDataLog.addElement("DARF : " + dfarf + "     DAMPA : " + dmap + "     AE : " + ae + "     LNR2L : " + lnr2l);
+
+				TelemetryData.getInstance().listDataLog.addElement("");
+
 			}
+			
 			if ( canAdress.equals("302")){
 
-                vhSpeed = Integer.parseInt(canPacket.substring(0, 2), 16 );
-                draxSpeed = Integer.parseInt(canPacket.substring(3, 5) ,16 );
-                slip_Calc = Integer.parseInt(canPacket.substring( 6,8), 16 );
-                osa_slip = Integer.parseInt(canPacket.substring(9, 11), 16 );
-				 
-                TelemetryData.getInstance().setDataID302(vhSpeed,draxSpeed,slip_Calc, osa_slip);
-				  
+				vhSpeed = Integer.parseInt(canPacket.substring(0, 2), 16 );
+				draxSpeed = Integer.parseInt(canPacket.substring(3, 5) ,16 );
+				slip_Calc = Integer.parseInt(canPacket.substring( 6,8), 16 );
+				osa_slip = Integer.parseInt(canPacket.substring(9, 11), 16 );
+
+				TelemetryData.getInstance().setDataID302(vhSpeed,draxSpeed,slip_Calc, osa_slip);
+
 				TelemetryData.getInstance().listDataLog.addElement("\nVHSPEED : " + vhSpeed + "     DRAXSPEED : " + draxSpeed + "     SLIP_CALC : " + slip_Calc + "     OSA_SLIP : " + osa_slip);
 				TelemetryData.getInstance().listDataLog.addElement("");
-				
+
 			}
 			
 			if ( canAdress.equals("304")){
 
-                TEROGBase = Integer.parseInt(canPacket.substring(0, 2) + canPacket.substring(3, 5) , 16 );
-                TEROG = Integer.parseInt(canPacket.substring(6, 8) + canPacket.substring( 9,11) ,16 );
-                SABase = Integer.parseInt(canPacket.substring( 12,14) + canPacket.substring( 15,17), 16 );
-                SA = Integer.parseInt(canPacket.substring(18, 20) + canPacket.substring(21, 23), 16 );
-				
-                Float SABaseApp = (float) (SABase * 0.25);
-                Float SAApp = (float) (SA * 0.25);
+				TEROGBase = Integer.parseInt(canPacket.substring(0, 2) + canPacket.substring(3, 5) , 16 );
+				TEROG = Integer.parseInt(canPacket.substring(6, 8) + canPacket.substring( 9,11) ,16 );
+				SABase = Integer.parseInt(canPacket.substring( 12,14) + canPacket.substring( 15,17), 16 );
+				SA = Integer.parseInt(canPacket.substring(18, 20) + canPacket.substring(21, 23), 16 );
 
-                TelemetryData.getInstance().setDataID304(TEROGBase,TEROG,SABaseApp, SAApp);
+				Float SABaseApp = (float) (SABase * 0.25);
+				Float SAApp = (float) (SA * 0.25);
 
-                
-                TelemetryData.getInstance().listDataLog.addElement("TEROGBase : " + TEROGBase + "     TEROG : " + TEROG + "     SABase : " + SABaseApp + "     SA : " + SAApp );
-                TelemetryData.getInstance().listDataLog.addElement("");
+				TelemetryData.getInstance().setDataID304(TEROGBase,TEROG,SABaseApp, SAApp);
+
+				TelemetryData.getInstance().listDataLog.addElement("TEROGBase : " + TEROGBase + "     TEROG : " + TEROG + "     SABase : " + SABaseApp + "     SA : " + SAApp );
+				TelemetryData.getInstance().listDataLog.addElement("");
 			}
 			
 			if ( canAdress.equals("305")){
 		
-                 CLC1 = Integer.parseInt(canPacket.substring( 6,8), 16 );
-                 CLC2 = Integer.parseInt(canPacket.substring(9, 11), 16 );
-                
-                 Float CLC1App = (float) (CLC1 * 0.05);
-                 Float CLC2App = (float) (CLC2 * 0.05);
-                
-                 TelemetryData.getInstance().setDataID305(null,null,CLC1App, CLC2App);
+				 CLC1 = Integer.parseInt(canPacket.substring( 6,8), 16 );
+				 CLC2 = Integer.parseInt(canPacket.substring(9, 11), 16 );
 
-                
-                 TelemetryData.getInstance().listDataLog.addElement("CLC1 : " + CLC1App + "    CLC2 : " + CLC2App );
-                 TelemetryData.getInstance().listDataLog.addElement("");
+				 Float CLC1App = (float) (CLC1 * 0.05);
+				 Float CLC2App = (float) (CLC2 * 0.05);
+
+				 TelemetryData.getInstance().setDataID305(null,null,CLC1App, CLC2App);
+
+
+				 TelemetryData.getInstance().listDataLog.addElement("CLC1 : " + CLC1App + "    CLC2 : " + CLC2App );
+				 TelemetryData.getInstance().listDataLog.addElement("");
 			}
             
 			if ( canAdress.equals("306")){
@@ -163,7 +162,7 @@ public class MyDataReceiveListener  implements IDataReceiveListener  {
 				 
 				 TelemetryData.getInstance().setDataID307(Baro,LNR3L,LNR4L, null); 
 
-                 TelemetryData.getInstance().listDataLog.addElement( "Baro " + Baro + "   LNR3L " + LNR3L + "   LNR4L " + LNR4L );
+                 		 TelemetryData.getInstance().listDataLog.addElement( "Baro " + Baro + "   LNR3L " + LNR3L + "   LNR4L " + LNR4L );
 				 TelemetryData.getInstance().listDataLog.addElement("");
 			}
             
