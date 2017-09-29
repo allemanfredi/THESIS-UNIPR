@@ -5,9 +5,9 @@ import javax.swing.JScrollPane;
 
 public class DataLog extends JInternalFrame{
 	
-	public DataLog( )
-	{
-		JList<String> logList = new JList<String>( TelemetryData.getInstance().listDataLog );
+	public DataLog( ){
+		
+	    JList<String> logList = new JList<String>( TelemetryData.getInstance().listDataLog );
 	    JScrollPane scrollpane = new JScrollPane(logList);
 	    
 	    getContentPane().add(scrollpane);
