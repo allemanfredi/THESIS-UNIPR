@@ -127,40 +127,38 @@ public class Main {
 		String s1 = "";
 		while ( ( s1 = Rasp1Data.getInstance().stdInput.readLine()) != null) {
             
-            String canName = s1.substring(2 , 6);
-            String canAdress = s1.substring(8, 11);// lo metto intero perchè non funziona
-            Integer canLenght = Character.getNumericValue(s1.charAt(15));
-            String canPacket = s1.substring(19, 42);
+			    String canName = s1.substring(2 , 6);
+			    String canAdress = s1.substring(8, 11);// lo metto intero perchè non funziona
+			    Integer canLenght = Character.getNumericValue(s1.charAt(15));
+			    String canPacket = s1.substring(19, 42);
+
+
+			    if ( canAdress.equals("300") )
+				Rasp1Data.getInstance().setDato300(s1);
+
+			    if ( canAdress.equals("301") )
+				Rasp1Data.getInstance().setDato301(s1);
+
+			    if ( canAdress.equals("302") )
+				Rasp1Data.getInstance().setDato302(s1);
+
+			    if ( canAdress.equals("304") )
+				Rasp1Data.getInstance().setDato304(s1);
+
+			    if ( canAdress.equals("305") )
+				Rasp1Data.getInstance().setDato305(s1);
+
+			    if ( canAdress.equals("306") )
+				Rasp1Data.getInstance().setDato306(s1);
+
+			    if ( canAdress.equals("307") )
+				Rasp1Data.getInstance().setDato307(s1);
+
+			    if ( canAdress.equals("308") )
+				Rasp1Data.getInstance().setDato308(s1);
+
+			    /* ................. */
             
-            
-            if ( canAdress.equals("300") )
-                Rasp1Data.getInstance().setDato300(s1);
-            
-            if ( canAdress.equals("301") )
-                Rasp1Data.getInstance().setDato301(s1);
-            
-            if ( canAdress.equals("302") )
-                Rasp1Data.getInstance().setDato302(s1);
-        
-            if ( canAdress.equals("304") )
-                Rasp1Data.getInstance().setDato304(s1);
-            
-            if ( canAdress.equals("305") )
-                Rasp1Data.getInstance().setDato305(s1);
-            
-            if ( canAdress.equals("306") )
-                Rasp1Data.getInstance().setDato306(s1);
-            
-            if ( canAdress.equals("307") )
-                Rasp1Data.getInstance().setDato307(s1);
-            
-            if ( canAdress.equals("308") )
-                Rasp1Data.getInstance().setDato308(s1);
-            
-            
-            /* ................. */
-            
-			
 		}
 	}
 }
