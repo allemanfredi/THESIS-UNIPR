@@ -28,13 +28,10 @@ public class SaveDataOnDB extends TimerTask {
 	@Override
 	public void run() {
 		
-    
 		System.out.println("STARTED   " + TelemetryData.getInstance().getDatiTelemetriaID300());
 		
-		
 		for ( Integer i = 0; i < TelemetryData.getInstance().vetAddressName.length; i++)
-            this.sendData(TelemetryData.getInstance().vetAddressName[i]);
-		
+           		 this.sendData(TelemetryData.getInstance().vetAddressName[i]);	
 	}
 	
 	private void sendData ( String address  )
