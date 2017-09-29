@@ -93,13 +93,11 @@ public class MainGUI implements ActionListener {
 		 if (e.getSource() == menuSettingPort) {
 			 Settings setting = new Settings();
 			
-	     }
+	     	 }
 		 if (e.getSource() == menuSettingPort) {
 			 Settings setting = new Settings();
 			
-	     }
-		
-		
+	     	 }
 	 }
 	 
 	 public void CreateGrapichsInterface(){
@@ -122,10 +120,10 @@ public class MainGUI implements ActionListener {
 		 menuAddLog = new JMenuItem("Add Log");
 		 menuAddLog.setAccelerator(KeyStroke.getKeyStroke(
 				 KeyEvent.VK_L, ActionEvent.ALT_MASK));
-		 menuAddLog.addActionListener(new ActionListener()
-		 {
-			 public void actionPerformed(ActionEvent e)
-			 {
+		 menuAddLog.addActionListener(new ActionListener(){
+			 
+			 public void actionPerformed(ActionEvent e){
+				 
 				 Log log = new Log ( TelemetryData.getInstance().listLog );
 				 dtp.add(log);
 			 }
@@ -139,10 +137,10 @@ public class MainGUI implements ActionListener {
 		 
 	 
 		 menuSettingPort = new JMenuItem("Settings Port");
-		 menuSettingPort.addActionListener(new ActionListener()
-		 {
-			 public void actionPerformed(ActionEvent e)
-			 {
+		 menuSettingPort.addActionListener(new ActionListener(){
+			 
+			 public void actionPerformed(ActionEvent e){
+				 
 				 Settings setting = new Settings(); 
 			 }
 		 });
@@ -156,34 +154,32 @@ public class MainGUI implements ActionListener {
 		btnOpenConnectionToolbar = new JButton(new ImageIcon ("img/wifi-connection-signal-symbol.png" ));
 		
 		btnOpenConnectionToolbar.addActionListener(new ActionListener(){
-			 public void actionPerformed(ActionEvent e)
-			 { 
+			 public void actionPerformed(ActionEvent e){ 
 				 
 				 if ( myDevice == null ){
 						
-					 if ( TelemetryData.getInstance().portName == null ||TelemetryData.getInstance(). baudRate == null )
-					 {
+					 if ( TelemetryData.getInstance().portName == null ||TelemetryData.getInstance(). baudRate == null ){
+						 
 						 TelemetryData.getInstance().listLog.addElement(" Invalid Parameters");
 						 return;
 					 }
 					 else
 					 	myDevice = new XBeeDevice(TelemetryData.getInstance().portName ,TelemetryData.getInstance(). baudRate);
-					
 						
-					}
-					else
-					{
+					 }
+					 else
+					 {
 						System.out.println("DEVO RIPARITRE");
 						System.out.println("Baud rate " + TelemetryData.getInstance().baudRate);
 						
-					}
+					 }
 				 
 				 try {
 					 
 					myDevice.open();
 					myDevice.addDataListener(new MyDataReceiveListener( ));
-					 TelemetryData.getInstance().listLog.removeAllElements();
-					 TelemetryData.getInstance().listLog.addElement("Receive Data...");
+					TelemetryData.getInstance().listLog.removeAllElements();
+					TelemetryData.getInstance().listLog.addElement("Receive Data...");
 					btnOpenConnectionToolbar.setEnabled(false);
 					btnCloseConnectionToolbar.setEnabled(true);
 					StartTimer();
@@ -204,11 +200,9 @@ public class MainGUI implements ActionListener {
 		 });
 		btnCloseConnectionToolbar = new JButton(new ImageIcon ("img/cancel.png" ));
 		btnCloseConnectionToolbar.setEnabled(false);
-		btnCloseConnectionToolbar.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			 {
-				
+		btnCloseConnectionToolbar.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e){
 
 				myDevice.close();
 				TelemetryData.getInstance().listLog.addElement("Stop to Receive Data");			
@@ -223,100 +217,93 @@ public class MainGUI implements ActionListener {
 		 });
 		
 		btnConnectionWithDB = new JButton(new ImageIcon ("img/databaseSI.png" ));
-		btnConnectionWithDB.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			 {
+		btnConnectionWithDB.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e){
 				
-				if ( statoConnessioneDB == true )
-				{
+				if ( statoConnessioneDB == true ){
+					
 					StopTimer();
 					btnConnectionWithDB.setIcon( new ImageIcon ( "img/databaseNO.png" ));
 					statoConnessioneDB = false;
 				}
-				else
-				{
+				else{
+					
 					StartTimer();
 					btnConnectionWithDB.setIcon( new ImageIcon ( "img/databaseSI.png" ));
 					statoConnessioneDB = true;
 				}
-				
-				
-				
-				
+
 			 }
 		 });
 		
 		btnSettingPort = new JButton(new ImageIcon ("img/settings.png" ));
-		btnSettingPort.addActionListener(new ActionListener()
-		{
-			 public void actionPerformed(ActionEvent e)
-			 {
+		btnSettingPort.addActionListener(new ActionListener(){
+			
+			 public void actionPerformed(ActionEvent e){
+				 
 				 Settings setting = new Settings(); 
 			 }
 		 });
 		
 		JButton btnAddFrame = new JButton(new ImageIcon ("img/add.png" ));
-		btnAddFrame.addActionListener(new ActionListener()
-		 {
-			 public void actionPerformed(ActionEvent e)
-			 {
-				 
-				 	
-				 	
-				 	switch ( comboTypeFrame.getSelectedItem().toString() )
-				 	{
-				 		case "Log":
-				 		{
-				 			Log log = new Log (  TelemetryData.getInstance().listLog );
-				 			log.setLocation(0, 570);
-				 		   	dtp.add(log);
-				 		   	break;
-				 		}
-				 		case "DataLog":
-				 		{
-				 			DataLog dataLog = new DataLog ( );
-				 		   	dtp.add(dataLog);
-				 		   	break;
-				 		}
-				 		case "Data":
-				 		{
-				 			TblGeneralData data = new TblGeneralData();
-				 			data.setLocation ( 1030 , 0 );
-						 	dtp.add(data);
-						 	break;
-				 		}
-				 		case "RPM Chart":
-				 		{
-				 			ChartRPM chartRpm = new ChartRPM();
-				 		   	chartRpm.setLocation(0, 230);
-				 		   	dtp.add(chartRpm);
-				 		   	break;
-				 		}
-				 		
-				 		case "FARF Chart":
-				 		{
-				 			ChartTPS chartTps = new ChartTPS();
-				 		   	chartTps.setLocation( 820 , 230 );
-				 		   	dtp.add(chartTps);
-				 		   	break;
-				 		}
-				 		case "TPS Chart":
-				 		{
-				 			ChartTPSXY chartTpsXy = new ChartTPSXY();
-				 		   	chartTpsXy.setLocation( 0 , 0 );
-				 		   	dtp.add(chartTpsXy);
-				 		   	break;
-				 		}
-				 				
-				 	}
+		btnAddFrame.addActionListener(new ActionListener(){
+			
+			 public void actionPerformed(ActionEvent e){
+
+				switch ( comboTypeFrame.getSelectedItem().toString() ){
+						
+					case "Log":
+					{
+						Log log = new Log (  TelemetryData.getInstance().listLog );
+						log.setLocation(0, 570);
+						dtp.add(log);
+						break;
+					}
+					case "DataLog":
+					{
+						DataLog dataLog = new DataLog ( );
+						dtp.add(dataLog);
+						break;
+					}
+					case "Data":
+					{
+						TblGeneralData data = new TblGeneralData();
+						data.setLocation ( 1030 , 0 );
+						dtp.add(data);
+						break;
+					}
+					case "RPM Chart":
+					{
+						ChartRPM chartRpm = new ChartRPM();
+						chartRpm.setLocation(0, 230);
+						dtp.add(chartRpm);
+						break;
+					}
+
+					case "FARF Chart":
+					{
+						ChartTPS chartTps = new ChartTPS();
+						chartTps.setLocation( 820 , 230 );
+						dtp.add(chartTps);
+						break;
+					}
+					case "TPS Chart":
+					{
+						ChartTPSXY chartTpsXy = new ChartTPSXY();
+						chartTpsXy.setLocation( 0 , 0 );
+						dtp.add(chartTpsXy);
+						break;
+					}
+
+				}
 				 	
 			 }
 		 });
 		
 		
 		String [] param = { "Log" , "DataLog" , "Data" , "RPM Chart" , "FARF Chart" , "TPS Chart" };
-	    comboTypeFrame = new JComboBox(param);
+	    	comboTypeFrame = new JComboBox(param);
 	
 		
 		toolbar.add(btnOpenConnectionToolbar);
