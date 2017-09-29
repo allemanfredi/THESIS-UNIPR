@@ -64,8 +64,8 @@ public class ChartRPM extends JInternalFrame{
 		setSize(800, 300);
 		setTitle("RPM's Chart");
 		setResizable(true);
-	    setClosable(true);
-	    setIconifiable(true);
+	    	setClosable(true);
+	    	setIconifiable(true);
 		
 	}
 	
