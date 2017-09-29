@@ -23,16 +23,15 @@ public class InitializeProgram {
 		JPanel panel = new JPanel(new GridLayout ( 2 , 1));
 		final JTextArea txtNomeSessione = new JTextArea();
 		JButton btnStartSessione = new JButton();
-		btnStartSessione.addActionListener(new ActionListener()
-		{
-			 public void actionPerformed(ActionEvent e)
-			 {
-				 if ( main == null )
-				 {
+		btnStartSessione.addActionListener(new ActionListener(){
+			
+			 public void actionPerformed(ActionEvent e){
+				 
+				 if ( main == null ){
+					 
 					 TelemetryData.getInstance().nomeSessione = txtNomeSessione.getText();
 					 main = new MainGUI();
-					 
-					 
+	 
 				 }
 				 
 			 }
