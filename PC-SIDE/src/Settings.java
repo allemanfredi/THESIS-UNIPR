@@ -112,7 +112,7 @@ public class Settings {//extends MainGUI{
 	    	  
 	    	  switch ( repeatComboBox.getSelectedItem().toString()){
 	    	  	case "1 second":
-                {
+                	{
 	    	  		TelemetryData.getInstance().repeatDelayTime = 1000;
 	    	  		break;
 	    	  	}
@@ -162,12 +162,10 @@ public class Settings {//extends MainGUI{
 		
 		JButton btnRefreshPort = new JButton ( "Refresh");
 		btnRefreshPort.addActionListener(new ActionListener(){
-	      public void actionPerformed(ActionEvent e)
-	      {
-	    	  SetPortAvaiable();
-	          
-	      }
-	    });
+		public void actionPerformed(ActionEvent e){
+			  SetPortAvaiable();
+		  }
+		 });
 		panelBtnSettingOk.add(btnRefreshPort);
 		
 		
@@ -183,7 +181,7 @@ public class Settings {//extends MainGUI{
 		panelSettingsDb.add(delayComboBox);
 		
 		JLabel lblRepeatTimer = new JLabel( "Repeat Timer to save on Database : ");
-	    repeatComboBox = new JComboBox(delay);
+	       repeatComboBox = new JComboBox(delay);
 		repeatComboBox.setSelectedIndex(4);
 		
 		panelSettingsDb.add(lblRepeatTimer);
@@ -212,13 +210,12 @@ public class Settings {//extends MainGUI{
 		comboNomePort.removeAllItems();
 		
 		Enumeration ports = CommPortIdentifier.getPortIdentifiers();
-	    portList = new ArrayList<String>();
-	    String portArray[] = null;
-	    while (ports.hasMoreElements()) {
-	        CommPortIdentifier port = (CommPortIdentifier) ports.nextElement();
-	        if (port.getPortType() == CommPortIdentifier.PORT_SERIAL) {
-	            portList.add(port.getName());
-	            
+	        portList = new ArrayList<String>();
+	        String portArray[] = null;
+	        while (ports.hasMoreElements()) {
+	         	CommPortIdentifier port = (CommPortIdentifier) ports.nextElement();
+	        	if (port.getPortType() == CommPortIdentifier.PORT_SERIAL) {
+	            		portList.add(port.getName()); 
 	        }
 	    }
 	  
