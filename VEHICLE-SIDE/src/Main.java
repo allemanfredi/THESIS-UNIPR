@@ -55,24 +55,24 @@ public class Main {
 		
 
 		try{
-        String cmdSetPorta = "sudo /sbin/ip link set "+ Rasp1Data.getInstance().port + " up type can bitrate "+ Rasp1Data.getInstance().bitRate.toString();
-        String cmdDownPorta = "sudo /sbin/ip link set " + Rasp1Data.getInstance().port + " down";
-        Rasp1Data.getInstance().proc = Rasp1Data.getInstance().rt.exec(cmdDownPorta);
-        Rasp1Data.getInstance().proc = Rasp1Data.getInstance().rt.exec(cmdSetPorta);
-        Rasp1Data.getInstance().proc.waitFor();
-        
-    }catch (Throwable t){
-            t.printStackTrace();
-     }
+			String cmdSetPorta = "sudo /sbin/ip link set "+ Rasp1Data.getInstance().port + " up type can bitrate "+ Rasp1Data.getInstance().bitRate.toString();
+			String cmdDownPorta = "sudo /sbin/ip link set " + Rasp1Data.getInstance().port + " down";
+			Rasp1Data.getInstance().proc = Rasp1Data.getInstance().rt.exec(cmdDownPorta);
+			Rasp1Data.getInstance().proc = Rasp1Data.getInstance().rt.exec(cmdSetPorta);
+			Rasp1Data.getInstance().proc.waitFor();
+
+		 }catch (Throwable t){
+			    t.printStackTrace();
+		  }
 				
 		try{
             
-        String cmdCanDump = "sudo candump "+ Rasp1Data.getInstance().port;
-        Rasp1Data.getInstance().proc = Rasp1Data.getInstance().rt.exec(cmdCanDump);
-			
-    } catch (Throwable t){
-            t.printStackTrace();
-        }
+			String cmdCanDump = "sudo candump "+ Rasp1Data.getInstance().port;
+			Rasp1Data.getInstance().proc = Rasp1Data.getInstance().rt.exec(cmdCanDump);
+
+		    } catch (Throwable t){
+			    t.printStackTrace();
+			}
 	
 		
 		Rasp1Data.getInstance().startSetting();
@@ -83,12 +83,12 @@ public class Main {
 			Rasp1Data.getInstance().myDevice.open();
 		} catch (XBeeException e1) {
 
-            e1.printStackTrace();
+            		e1.printStackTrace();
 		}
 
 		
 		FileOutputStream prova = new FileOutputStream("dati.txt");
-        PrintStream scrivi = new PrintStream(prova);
+        	PrintStream scrivi = new PrintStream(prova);
         
 		
 		timer300 = new Timer();
